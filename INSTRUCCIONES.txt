@@ -1,2 +1,12 @@
-SUBE A GITHUB LOS ARCHIVOS index.html Y portada.jpg.
-No subas el ZIP directamente: primero descomprímelo.
+CASA CANCÚN LA CASCADA — VERSIÓN PROFESIONAL
+
+Sube a GitHub TODO el contenido de esta carpeta:
+1. index.html
+2. portada.jpg
+3. la carpeta fotos completa
+
+En GitHub, reemplaza los archivos existentes y conserva exactamente estos nombres.
+Después pulsa Commit changes.
+
+Liga:
+https://adrianamvignau.github.io/casa-cancun-la-cascada/

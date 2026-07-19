@@ -1,0 +1,2 @@
+SUBE A GITHUB LOS ARCHIVOS index.html Y portada.jpg.
+No subas el ZIP directamente: primero descomprímelo.

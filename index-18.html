@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vignau Properties | Casa Cancún La Cascada</title>
+  <meta name="description" content="Casa amueblada en renta en la Zona Hotelera de Cancún. 3 recámaras, 3.5 baños y opción de renta desde $40,000 MXN mensuales.">
+
+  <meta property="og:title" content="Casa Cancún La Cascada | Vignau Properties">
+  <meta property="og:description" content="Residencia amueblada en renta en la Zona Hotelera de Cancún. Desde $40,000 MXN mensuales.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://adrianamvignau.github.io/casa-cancun-la-cascada/">
+  <meta property="og:image" content="https://adrianamvignau.github.io/casa-cancun-la-cascada/portada.jpg?v=4">
+  <meta property="og:image:secure_url" content="https://adrianamvignau.github.io/casa-cancun-la-cascada/portada.jpg?v=4">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    :root {
+      --navy:#122b3a;
+      --navy-2:#1c3b4d;
+      --sand:#c7a56a;
+      --cream:#f7f3ec;
+      --white:#ffffff;
+      --ink:#21323b;
+      --muted:#6e7c83;
+      --shadow:0 18px 60px rgba(18,43,58,.12);
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      color:var(--ink);
+      background:var(--white);
+    }
+    img { max-width:100%; }
+    a { color:inherit; }
+
+    .topbar {
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:20;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 5vw;
+      transition:.3s ease;
+      color:white;
+      background:linear-gradient(to bottom,rgba(0,0,0,.52),rgba(0,0,0,0));
+    }
+    .topbar.scrolled {
+      background:rgba(18,43,58,.96);
+      backdrop-filter:blur(10px);
+      box-shadow:0 8px 24px rgba(0,0,0,.12);
+    }
+    .brand {
+      font-family:Georgia,serif;
+      font-size:1.05rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      line-height:1.1;
+    }
+    .brand small {
+      display:block;
+      margin-top:4px;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      font-size:.62rem;
+      letter-spacing:.26em;
+      opacity:.82;
+    }
+    .toplink {
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.7);
+      border-radius:999px;
+      padding:10px 16px;
+      font-size:.88rem;
+      font-weight:700;
+    }
+
+    .hero {
+      min-height:100vh;
+      display:grid;
+      align-items:end;
+      position:relative;
+      color:white;
+      background:
+        linear-gradient(180deg,rgba(4,20,28,.10) 10%,rgba(4,20,28,.20) 45%,rgba(4,20,28,.78) 100%),
+        url('portada.jpg') center/cover no-repeat;
+    }
+    .hero::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,rgba(0,0,0,.22),transparent 58%);
+      pointer-events:none;
+    }
+    .hero-content {
+      position:relative;
+      z-index:2;
+      width:min(1180px,90vw);
+      margin:0 auto;
+      padding:0 0 10vh;
+    }
+    .eyebrow {
+      display:inline-block;
+      margin-bottom:18px;
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+    }
+    h1,h2,h3 {
+      font-family:Georgia,serif;
+      font-weight:500;
+    }
+    h1 {
+      max-width:850px;
+      margin:0;
+      font-size:clamp(3.4rem,8vw,7.5rem);
+      line-height:.91;
+      letter-spacing:-.035em;
+    }
+    .hero-copy {
+      max-width:680px;
+      margin:26px 0 28px;
+      font-size:clamp(1.05rem,2vw,1.35rem);
+      line-height:1.65;
+      color:rgba(255,255,255,.92);
+    }
+    .hero-actions {
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      padding:13px 22px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      transition:.2s ease;
+    }
+    .btn-primary { background:var(--sand); color:white; }
+    .btn-primary:hover { transform:translateY(-2px); }
+    .btn-ghost {
+      color:white;
+      border:1px solid rgba(255,255,255,.72);
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(8px);
+    }
+    .price-chip {
+      display:inline-flex;
+      align-items:center;
+      min-height:50px;
+      padding:0 18px;
+      border-radius:999px;
+      background:rgba(18,43,58,.62);
+      backdrop-filter:blur(10px);
+      font-weight:800;
+    }
+
+    section { padding:92px 5vw; }
+    .wrap { width:min(1180px,100%); margin:0 auto; }
+    .cream { background:var(--cream); }
+    .section-kicker {
+      color:var(--sand);
+      font-size:.78rem;
+      letter-spacing:.19em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    h2 {
+      margin:12px 0 22px;
+      color:var(--navy);
+      font-size:clamp(2.4rem,5.2vw,4.8rem);
+      line-height:1.02;
+      letter-spacing:-.03em;
+    }
+    .lead {
+      max-width:800px;
+      color:var(--muted);
+      font-size:1.16rem;
+      line-height:1.8;
+    }
+
+    .intro-grid {
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:52px;
+      align-items:start;
+    }
+    .pricing-card {
+      background:white;
+      border-radius:26px;
+      padding:32px;
+      box-shadow:var(--shadow);
+    }
+    .pricing-card h3 {
+      margin:0 0 18px;
+      color:var(--navy);
+      font-size:1.8rem;
+    }
+    .price-row {
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      padding:18px 0;
+      border-top:1px solid #e9e1d5;
+    }
+    .price-row:first-of-type { border-top:0; }
+    .price-row span { color:var(--muted); }
+    .price-row b { color:var(--navy); text-align:right; }
+
+    .facts {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:42px;
+    }
+    .fact {
+      background:white;
+      border:1px solid #ece5da;
+      border-radius:20px;
+      padding:24px;
+      min-height:150px;
+      box-shadow:0 10px 28px rgba(18,43,58,.06);
+    }
+    .fact b {
+      display:block;
+      margin-bottom:9px;
+      color:var(--sand);
+      font-family:Georgia,serif;
+      font-size:1.8rem;
+      font-weight:500;
+    }
+
+    .features {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:40px;
+    }
+    .feature {
+      border-radius:22px;
+      padding:28px;
+      background:var(--navy);
+      color:white;
+    }
+    .feature h3 { margin:0 0 10px; font-size:1.45rem; }
+    .feature p { margin:0; color:rgba(255,255,255,.76); line-height:1.65; }
+
+    .gallery-head {
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:end;
+      margin-bottom:28px;
+    }
+    .gallery-note { color:var(--muted); }
+    .gallery {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+    .photo {
+      border:0;
+      padding:0;
+      overflow:hidden;
+      border-radius:16px;
+      aspect-ratio:4/3;
+      cursor:zoom-in;
+      background:#e9e3da;
+    }
+    .photo img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform .35s ease;
+    }
+    .photo:hover img { transform:scale(1.04); }
+    .photo:nth-child(1),
+    .photo:nth-child(8),
+    .photo:nth-child(15) {
+      grid-column:span 2;
+      grid-row:span 2;
+    }
+
+    .contact-shell {
+      display:grid;
+      grid-template-columns:1fr .9fr;
+      overflow:hidden;
+      border-radius:30px;
+      background:var(--navy);
+      box-shadow:var(--shadow);
+    }
+    .contact-copy {
+      padding:52px;
+      color:white;
+    }
+    .contact-copy h2 { color:white; margin-top:8px; }
+    .contact-copy p {
+      color:rgba(255,255,255,.78);
+      line-height:1.75;
+    }
+    .contact-card {
+      margin:28px;
+      padding:34px;
+      align-self:center;
+      background:white;
+      border-radius:24px;
+    }
+    .contact-card h3 {
+      margin:0 0 18px;
+      color:var(--navy);
+      font-size:1.8rem;
+    }
+    .contact-card a {
+      display:block;
+      margin:9px 0;
+      color:var(--navy);
+      text-decoration:none;
+      font-weight:700;
+    }
+    .contact-card .btn {
+      display:inline-flex;
+      margin-top:18px;
+      color:white;
+    }
+
+    footer {
+      padding:34px 5vw;
+      text-align:center;
+      color:white;
+      background:#0d202a;
+    }
+    footer .footer-brand {
+      font-family:Georgia,serif;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .float {
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:25;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      color:white;
+      background:#25d366;
+      text-decoration:none;
+      font-weight:800;
+      box-shadow:0 12px 30px rgba(0,0,0,.22);
+    }
+
+    .lightbox {
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:50;
+      align-items:center;
+      justify-content:center;
+      padding:30px;
+      background:rgba(0,0,0,.94);
+    }
+    .lightbox.open { display:flex; }
+    .lightbox img {
+      max-width:94vw;
+      max-height:90vh;
+      border-radius:10px;
+    }
+    .lightbox button {
+      position:absolute;
+      top:18px;
+      right:22px;
+      border:0;
+      color:white;
+      background:none;
+      font-size:2.6rem;
+      cursor:pointer;
+    }
+
+    @media (max-width:900px) {
+      .intro-grid,
+      .contact-shell { grid-template-columns:1fr; }
+      .facts { grid-template-columns:repeat(2,1fr); }
+      .features { grid-template-columns:1fr; }
+      .gallery { grid-template-columns:repeat(2,1fr); }
+      .photo:nth-child(1),
+      .photo:nth-child(8),
+      .photo:nth-child(15) {
+        grid-column:auto;
+        grid-row:auto;
+      }
+      .contact-copy { padding:38px 30px; }
+      .contact-card { margin:0 20px 20px; }
+    }
+
+    @media (max-width:620px) {
+      .topbar { padding:15px 18px; }
+      .brand { font-size:.88rem; }
+      .brand small { font-size:.54rem; }
+      .toplink { display:none; }
+      .hero-content { width:calc(100% - 36px); padding-bottom:8vh; }
+      .hero-copy { margin-top:18px; }
+      section { padding:72px 20px; }
+      .facts { grid-template-columns:1fr 1fr; }
+      .fact { padding:19px; min-height:125px; }
+      .gallery { gap:8px; }
+      .photo { border-radius:11px; }
+      .pricing-card { padding:24px; }
+      .price-row { flex-direction:column; gap:5px; }
+      .price-row b { text-align:left; }
+      .gallery-head { display:block; }
+      .float { right:12px; bottom:12px; }
+    }
+  </style>
+</head>
+
+<body oncontextmenu="return false">
+  <header class="topbar" id="topbar">
+    <div class="brand">
+      Vignau Properties
+      <small>Residencias seleccionadas</small>
+    </div>
+    <a class="toplink" href="#contacto">Solicitar información</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">Zona Hotelera · Cancún</span>
+        <h1>Casa Cancún<br>La Cascada</h1>
+        <p class="hero-copy">
+          Una residencia amplia, amueblada y rodeada de jardines para disfrutar Cancún con comodidad, privacidad y una ubicación privilegiada.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacto">Agendar una visita</a>
+          <a class="btn btn-ghost" href="#galeria">Ver fotografías</a>
+          <span class="price-chip">Desde $40,000 MXN al mes</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream">
+      <div class="wrap intro-grid">
+        <div>
+          <span class="section-kicker">La propiedad</span>
+          <h2>Espacios pensados para vivir Cancún con tranquilidad</h2>
+          <p class="lead">
+            Casa equipada y amueblada en la Zona Hotelera de Cancún. Su distribución, amplitud y áreas verdes la convierten en una excelente opción para estancias cómodas y de largo plazo.
+          </p>
+
+          <div class="facts">
+            <div class="fact"><b>3</b>Recámaras</div>
+            <div class="fact"><b>3.5</b>Baños</div>
+            <div class="fact"><b>Amueblada</b>Y equipada</div>
+            <div class="fact"><b>Cancún</b>Zona Hotelera</div>
+          </div>
+        </div>
+
+        <aside class="pricing-card">
+          <span class="section-kicker">Opciones de renta</span>
+          <h3>Elige la modalidad ideal</h3>
+          <div class="price-row">
+            <span>Casa completa · 3 recámaras</span>
+            <b>$50,000 MXN / mes</b>
+          </div>
+          <div class="price-row">
+            <span>Opción · 2 recámaras</span>
+            <b>$40,000 MXN / mes</b>
+          </div>
+          <a class="btn btn-primary" href="https://wa.me/528182540609?text=Hola%20Adriana,%20me%20interesa%20recibir%20información%20sobre%20Casa%20Cancún%20La%20Cascada">Consultar disponibilidad</a>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <span class="section-kicker">Por qué elegirla</span>
+        <h2>Comodidad, ubicación y amplitud</h2>
+        <div class="features">
+          <article class="feature">
+            <h3>Lista para habitar</h3>
+            <p>Se entrega amueblada y equipada para que puedas instalarte con facilidad.</p>
+          </article>
+          <article class="feature">
+            <h3>Entorno privilegiado</h3>
+            <p>Ubicada en la Zona Hotelera, cerca de servicios, restaurantes y los principales atractivos de Cancún.</p>
+          </article>
+          <article class="feature">
+            <h3>Espacios para disfrutar</h3>
+            <p>Interiores amplios, jardines y áreas pensadas para una estancia cómoda y relajada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="cream">
+      <div class="wrap">
+        <div class="gallery-head">
+          <div>
+            <span class="section-kicker">Galería</span>
+            <h2>Conoce cada espacio</h2>
+          </div>
+          <p class="gallery-note">Toca una fotografía para ampliarla.</p>
+        </div>
+        <div class="gallery">
+          <button class="photo" aria-label="Ampliar fotografía 23"><img loading="lazy" src="foto-23.jpg" alt="Casa Cancún La Cascada, fotografía 23"></button>
+<button class="photo" aria-label="Ampliar fotografía 24"><img loading="lazy" src="foto-24.jpg" alt="Casa Cancún La Cascada, fotografía 24"></button>
+<button class="photo" aria-label="Ampliar fotografía 25"><img loading="lazy" src="foto-25.jpg" alt="Casa Cancún La Cascada, fotografía 25"></button>
+<button class="photo" aria-label="Ampliar fotografía 26"><img loading="lazy" src="foto-26.jpg" alt="Casa Cancún La Cascada, fotografía 26"></button>
+<button class="photo" aria-label="Ampliar fotografía 27"><img loading="lazy" src="foto-27.jpg" alt="Casa Cancún La Cascada, fotografía 27"></button>
+<button class="photo" aria-label="Ampliar fotografía 28"><img loading="lazy" src="foto-28.jpg" alt="Casa Cancún La Cascada, fotografía 28"></button>
+<button class="photo" aria-label="Ampliar fotografía 29"><img loading="lazy" src="foto-29.jpg" alt="Casa Cancún La Cascada, fotografía 29"></button>
+<button class="photo" aria-label="Ampliar fotografía 30"><img loading="lazy" src="foto-30.jpg" alt="Casa Cancún La Cascada, fotografía 30"></button>
+<button class="photo" aria-label="Ampliar fotografía 31"><img loading="lazy" src="foto-31.jpg" alt="Casa Cancún La Cascada, fotografía 31"></button>
+<button class="photo" aria-label="Ampliar fotografía 32"><img loading="lazy" src="foto-32.jpg" alt="Casa Cancún La Cascada, fotografía 32"></button>
+<button class="photo" aria-label="Ampliar fotografía 33"><img loading="lazy" src="foto-33.jpg" alt="Casa Cancún La Cascada, fotografía 33"></button>
+<button class="photo" aria-label="Ampliar fotografía 34"><img loading="lazy" src="foto-34.jpg" alt="Casa Cancún La Cascada, fotografía 34"></button>
+<button class="photo" aria-label="Ampliar fotografía 35"><img loading="lazy" src="foto-35.jpg" alt="Casa Cancún La Cascada, fotografía 35"></button>
+<button class="photo" aria-label="Ampliar fotografía 36"><img loading="lazy" src="foto-36.jpg" alt="Casa Cancún La Cascada, fotografía 36"></button>
+<button class="photo" aria-label="Ampliar fotografía 37"><img loading="lazy" src="foto-37.jpg" alt="Casa Cancún La Cascada, fotografía 37"></button>
+<button class="photo" aria-label="Ampliar fotografía 38"><img loading="lazy" src="foto-38.jpg" alt="Casa Cancún La Cascada, fotografía 38"></button>
+<button class="photo" aria-label="Ampliar fotografía 39"><img loading="lazy" src="foto-39.jpg" alt="Casa Cancún La Cascada, fotografía 39"></button>
+<button class="photo" aria-label="Ampliar fotografía 40"><img loading="lazy" src="foto-40.jpg" alt="Casa Cancún La Cascada, fotografía 40"></button>
+<button class="photo" aria-label="Ampliar fotografía 41"><img loading="lazy" src="foto-41.jpg" alt="Casa Cancún La Cascada, fotografía 41"></button>
+<button class="photo" aria-label="Ampliar fotografía 42"><img loading="lazy" src="foto-42.jpg" alt="Casa Cancún La Cascada, fotografía 42"></button>
+<button class="photo" aria-label="Ampliar fotografía 43"><img loading="lazy" src="foto-43.jpg" alt="Casa Cancún La Cascada, fotografía 43"></button>
+<button class="photo" aria-label="Ampliar fotografía 44"><img loading="lazy" src="foto-44.jpg" alt="Casa Cancún La Cascada, fotografía 44"></button>
+<button class="photo" aria-label="Ampliar fotografía 45"><img loading="lazy" src="foto-45.jpg" alt="Casa Cancún La Cascada, fotografía 45"></button>
+<button class="photo" aria-label="Ampliar fotografía 46"><img loading="lazy" src="foto-46.jpg" alt="Casa Cancún La Cascada, fotografía 46"></button>
+<button class="photo" aria-label="Ampliar fotografía 47"><img loading="lazy" src="foto-47.jpg" alt="Casa Cancún La Cascada, fotografía 47"></button>
+<button class="photo" aria-label="Ampliar fotografía 48"><img loading="lazy" src="foto-48.jpg" alt="Casa Cancún La Cascada, fotografía 48"></button>
+<button class="photo" aria-label="Ampliar fotografía 49"><img loading="lazy" src="foto-49.jpg" alt="Casa Cancún La Cascada, fotografía 49"></button>
+<button class="photo" aria-label="Ampliar fotografía 1"><img loading="lazy" src="foto-01.jpg" alt="Casa Cancún La Cascada, fotografía 1"></button>
+<button class="photo" aria-label="Ampliar fotografía 2"><img loading="lazy" src="foto-02.jpg" alt="Casa Cancún La Cascada, fotografía 2"></button>
+<button class="photo" aria-label="Ampliar fotografía 3"><img loading="lazy" src="foto-03.jpg" alt="Casa Cancún La Cascada, fotografía 3"></button>
+<button class="photo" aria-label="Ampliar fotografía 4"><img loading="lazy" src="foto-04.jpg" alt="Casa Cancún La Cascada, fotografía 4"></button>
+<button class="photo" aria-label="Ampliar fotografía 5"><img loading="lazy" src="foto-05.jpg" alt="Casa Cancún La Cascada, fotografía 5"></button>
+<button class="photo" aria-label="Ampliar fotografía 6"><img loading="lazy" src="foto-06.jpg" alt="Casa Cancún La Cascada, fotografía 6"></button>
+<button class="photo" aria-label="Ampliar fotografía 7"><img loading="lazy" src="foto-07.jpg" alt="Casa Cancún La Cascada, fotografía 7"></button>
+<button class="photo" aria-label="Ampliar fotografía 8"><img loading="lazy" src="foto-08.jpg" alt="Casa Cancún La Cascada, fotografía 8"></button>
+<button class="photo" aria-label="Ampliar fotografía 9"><img loading="lazy" src="foto-09.jpg" alt="Casa Cancún La Cascada, fotografía 9"></button>
+<button class="photo" aria-label="Ampliar fotografía 10"><img loading="lazy" src="foto-10.jpg" alt="Casa Cancún La Cascada, fotografía 10"></button>
+<button class="photo" aria-label="Ampliar fotografía 11"><img loading="lazy" src="foto-11.jpg" alt="Casa Cancún La Cascada, fotografía 11"></button>
+<button class="photo" aria-label="Ampliar fotografía 12"><img loading="lazy" src="foto-12.jpg" alt="Casa Cancún La Cascada, fotografía 12"></button>
+<button class="photo" aria-label="Ampliar fotografía 13"><img loading="lazy" src="foto-13.jpg" alt="Casa Cancún La Cascada, fotografía 13"></button>
+<button class="photo" aria-label="Ampliar fotografía 14"><img loading="lazy" src="foto-14.jpg" alt="Casa Cancún La Cascada, fotografía 14"></button>
+<button class="photo" aria-label="Ampliar fotografía 15"><img loading="lazy" src="foto-15.jpg" alt="Casa Cancún La Cascada, fotografía 15"></button>
+<button class="photo" aria-label="Ampliar fotografía 16"><img loading="lazy" src="foto-16.jpg" alt="Casa Cancún La Cascada, fotografía 16"></button>
+<button class="photo" aria-label="Ampliar fotografía 17"><img loading="lazy" src="foto-17.jpg" alt="Casa Cancún La Cascada, fotografía 17"></button>
+<button class="photo" aria-label="Ampliar fotografía 18"><img loading="lazy" src="foto-18.jpg" alt="Casa Cancún La Cascada, fotografía 18"></button>
+<button class="photo" aria-label="Ampliar fotografía 19"><img loading="lazy" src="foto-19.jpg" alt="Casa Cancún La Cascada, fotografía 19"></button>
+<button class="photo" aria-label="Ampliar fotografía 20"><img loading="lazy" src="foto-20.jpg" alt="Casa Cancún La Cascada, fotografía 20"></button>
+<button class="photo" aria-label="Ampliar fotografía 21"><img loading="lazy" src="foto-21.jpg" alt="Casa Cancún La Cascada, fotografía 21"></button>
+<button class="photo" aria-label="Ampliar fotografía 22"><img loading="lazy" src="foto-22.jpg" alt="Casa Cancún La Cascada, fotografía 22"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="wrap contact-shell">
+        <div class="contact-copy">
+          <span class="section-kicker">Información y visitas</span>
+          <h2>Agenda una visita privada</h2>
+          <p>
+            Con gusto puedo compartirte más información sobre disponibilidad, condiciones de renta y coordinar una visita a la propiedad.
+          </p>
+        </div>
+        <div class="contact-card">
+          <h3>Adriana M. Vignau Ling</h3>
+          <a href="tel:+528182540609">81 8254 0609</a>
+          <a href="mailto:adrianavignau@gmail.com">adrianavignau@gmail.com</a>
+          <a class="btn btn-primary" href="https://wa.me/528182540609?text=Hola%20Adriana,%20me%20interesa%20Casa%20Cancún%20La%20Cascada">
+            Escribir por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">Vignau Properties</div>
+    <p>Casa Cancún La Cascada · Zona Hotelera de Cancún</p>
+  </footer>
+
+  <a class="float" href="https://wa.me/528182540609?text=Hola%20Adriana,%20me%20interesa%20Casa%20Cancún%20La%20Cascada">WhatsApp</a>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" aria-label="Cerrar">×</button>
+    <img alt="Fotografía ampliada">
+  </div>
+
+  <script>
+    const topbar = document.getElementById('topbar');
+    window.addEventListener('scroll', () => {
+      topbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const lightbox = document.getElementById('lightbox');
+    const largeImage = lightbox.querySelector('img');
+    const closeButton = lightbox.querySelector('button');
+
+    document.querySelectorAll('.photo img').forEach(img => {
+      img.addEventListener('click', () => {
+        largeImage.src = img.src;
+        largeImage.alt = img.alt;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+      img.ondragstart = () => false;
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      largeImage.src = '';
+    };
+
+    closeButton.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

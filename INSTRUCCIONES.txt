@@ -1,12 +1,8 @@
-CASA CANCÚN LA CASCADA — VERSIÓN PROFESIONAL
+SUBE TODOS LOS ARCHIVOS DE ESTA CARPETA A TU REPOSITORIO DE GITHUB.
+Acepta reemplazar los archivos que ya existan y pulsa Commit changes.
+No borres el repositorio.
 
-Sube a GitHub TODO el contenido de esta carpeta:
-1. index.html
-2. portada.jpg
-3. la carpeta fotos completa
+Después abre:
+https://adrianamvignau.github.io/casa-cancun-la-cascada/?final=3
 
-En GitHub, reemplaza los archivos existentes y conserva exactamente estos nombres.
-Después pulsa Commit changes.
-
-Liga:
-https://adrianamvignau.github.io/casa-cancun-la-cascada/
+Incluye 49 fotografías originales con UNA sola marca de agua.
